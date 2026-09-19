@@ -1,0 +1,303 @@
+:root {
+  color-scheme: dark;
+  --bg: #0a0f1e;
+  --panel: rgba(148, 178, 255, 0.06);
+  --border: rgba(148, 178, 255, 0.16);
+  --text: #d7e1f7;
+  --dim: #8b98b8;
+  --amber: #f5b942;
+  --teal: #4fd1c5;
+  --red: #f26d6d;
+  --green: #6dd69a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  font-family: "PingFang SC", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+  background:
+    radial-gradient(1px 1px at 12% 18%, rgba(255,255,255,.8) 50%, transparent 51%),
+    radial-gradient(1px 1px at 38% 8%,  rgba(255,255,255,.6) 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 66% 22%, rgba(255,255,255,.7) 50%, transparent 51%),
+    radial-gradient(1px 1px at 84% 12%, rgba(255,255,255,.5) 50%, transparent 51%),
+    radial-gradient(1px 1px at 52% 30%, rgba(255,255,255,.4) 50%, transparent 51%),
+    linear-gradient(180deg, #0a0f1e 0%, #0d1526 55%, #0a1a2a 100%);
+  background-attachment: fixed;
+}
+
+.app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 20px 48px;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 24px;
+  margin-bottom: 16px;
+}
+.header h1 {
+  margin: 0;
+  font-size: 26px;
+  letter-spacing: 2px;
+  text-shadow: 0 0 18px rgba(245, 185, 66, 0.25);
+}
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  color: var(--dim);
+  font-size: 14px;
+}
+.stats b { color: var(--amber); font-weight: 600; }
+
+.opsbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--panel);
+}
+.ops-hint { color: var(--dim); font-size: 14px; }
+.ops-hint b { color: var(--text); }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+.panel {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--panel);
+  padding: 16px;
+}
+.panel h2 {
+  margin: 0 0 12px;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+input, select {
+  background: rgba(10, 15, 30, 0.7);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  padding: 8px 10px;
+  font-size: 14px;
+  flex: 1 1 110px;
+  min-width: 0;
+}
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--amber);
+}
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--dim);
+  flex: 0 0 auto;
+}
+.checkbox input { flex: none; }
+
+.btn {
+  background: rgba(148, 178, 255, 0.12);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  padding: 8px 14px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.btn:hover:not(:disabled) {
+  background: rgba(148, 178, 255, 0.22);
+  border-color: rgba(148, 178, 255, 0.4);
+}
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.btn-primary {
+  background: linear-gradient(135deg, #f5b942, #e08e2b);
+  border-color: transparent;
+  color: #1a1206;
+  font-weight: 700;
+}
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #ffca5c, #f09a35);
+  border-color: transparent;
+}
+.btn-load { font-size: 16px; padding: 10px 22px; }
+
+.btn-danger {
+  border-color: rgba(242, 109, 109, 0.5);
+  color: var(--red);
+}
+.btn-danger:hover:not(:disabled) {
+  background: rgba(242, 109, 109, 0.15);
+  border-color: var(--red);
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  color: var(--dim);
+  padding: 2px 6px;
+  font-size: 13px;
+  text-decoration: underline;
+}
+.btn-link:hover:not(:disabled) { color: var(--red); background: none; }
+
+.empty { color: var(--dim); font-size: 14px; }
+.dim { color: var(--dim); font-size: 13px; }
+
+/* 渡轮卡片 */
+.ferry-list { display: flex; flex-direction: column; gap: 12px; }
+.ferry-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  background: rgba(10, 15, 30, 0.45);
+}
+.ferry-card.current { border-color: rgba(245, 185, 66, 0.55); box-shadow: 0 0 14px rgba(245, 185, 66, 0.12); }
+.ferry-card.maintenance { opacity: 0.75; border-style: dashed; }
+
+.ferry-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.ferry-name { font-weight: 700; font-size: 15px; }
+
+.badges { display: flex; gap: 6px; flex-wrap: wrap; }
+.badge {
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--dim);
+}
+.badge-current { color: #1a1206; background: var(--amber); border-color: transparent; font-weight: 600; }
+.badge-maint { color: var(--red); border-color: rgba(242, 109, 109, 0.5); }
+
+.meter {
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(148, 178, 255, 0.12);
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+.meter-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--teal), var(--amber));
+  transition: width 0.25s;
+}
+.ferry-meta { font-size: 13px; color: var(--dim); margin-bottom: 8px; }
+
+.manifest {
+  margin: 0 0 10px;
+  padding-left: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+}
+.manifest li { display: flex; justify-content: space-between; gap: 8px; }
+
+/* 候船队列 */
+.queue {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.queue li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(10, 15, 30, 0.45);
+  font-size: 14px;
+}
+.queue li.head { border-color: rgba(79, 209, 197, 0.55); }
+.pos {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(148, 178, 255, 0.15);
+  color: var(--dim);
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+.queue li.head .pos { background: var(--teal); color: #06251f; font-weight: 700; }
+.plate { font-weight: 600; letter-spacing: 0.5px; }
+
+/* 放行记录 */
+.records {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 560px;
+  overflow-y: auto;
+}
+.rec {
+  display: flex;
+  gap: 10px;
+  padding: 7px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: rgba(10, 15, 30, 0.45);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.rec-time { color: var(--dim); flex: none; font-variant-numeric: tabular-nums; }
+.rec-ok    { border-left: 3px solid var(--green); }
+.rec-reject { border-left: 3px solid var(--red); }
+.rec-warn  { border-left: 3px solid var(--amber); }
+.rec-maint { border-left: 3px solid #b98cf5; }
+.rec-info  { border-left: 3px solid rgba(148, 178, 255, 0.5); }
+
+.footer {
+  margin-top: 24px;
+  color: var(--dim);
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
